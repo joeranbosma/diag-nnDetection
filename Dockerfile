@@ -39,7 +39,7 @@ RUN pip install numpy
 # Install own code
 COPY ./requirements.txt .
 RUN mkdir -p ${det_data} \
-  && mkdir -p ${det_models} \
+  # && mkdir -p ${det_models} \ on a mounted share
   && mkdir -p /home/code/nndet \
   && pip install -r requirements.txt  \
   && pip install hydra-core --upgrade --pre \
