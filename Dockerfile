@@ -16,10 +16,11 @@
 FROM nvcr.io/nvidia/pytorch:20.12-py3
 
 ARG env_det_num_threads=6
-ARG env_det_verbose=1
+ARG env_det_verbose=0
+# set env_det_verbose=1 for tqdm progress bars
 
 # Setup environment variables
-ENV det_data=/output/data det_models=/output/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
+ENV det_data=/opt/data det_models=/output/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
 
 # Install some tools
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y \
@@ -46,6 +47,4 @@ RUN mkdir -p ${det_data} \
 
 WORKDIR /opt/code/nndet
 COPY . .
-RUN ls /opt/code/nndet/nndet/inference/
 RUN FORCE_CUDA=1 pip install -v -e .
-RUN ls /opt/code/nndet/nndet/inference/
