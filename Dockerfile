@@ -48,3 +48,4 @@ WORKDIR /opt/code/nndet
 COPY . .
 RUN ls /opt/code/nndet/nndet/inference/
 RUN FORCE_CUDA=1 pip install -v -e .
+RUN ls /opt/code/nndet/nndet/inference/
