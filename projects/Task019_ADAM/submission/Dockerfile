@@ -5,9 +5,9 @@ ARG task
 ARG model
 ARG fold
 
-ENV ENVTASK=$task ENVMODEL=$model ENVFOLD=$fold det_results=/opt/results
-ENV det_data=/opt/data
-ENV det_models=/opt/models
+ENV ENVTASK=$task ENVMODEL=$model ENVFOLD=$fold det_results=/output/results
+ENV det_data=/input/data
+ENV det_models=/output/models
 
 RUN echo ${ENVTASK} ${ENVMODEL} ${ENVFOLD} \
     && mkdir -p ${det_models}/${ENVTASK}/${ENVMODEL}/${ENVFOLD} \

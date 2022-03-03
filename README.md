@@ -37,11 +37,11 @@ docker build -t nndetection:0.1 --build-arg env_det_num_threads=6 --build-arg en
 
 (`--build-arg env_det_num_threads=6` and `--build-arg env_det_verbose=1` are optional and are used to overwrite the provided default parameters)
 
-The docker container expects data and models in its own `/opt/data` and `/opt/models` directories respectively.
+The docker container expects data and models in its own `/input/data` and `/output/models` directories respectively.
 The directories need to be mounted via docker `-v`. For simplicity and speed, the ENV variables `det_data` and `det_models` can be set in the host system to point to the desired directories. To run:
 
 ```bash
-docker run --gpus all -v ${det_data}:/opt/data -v ${det_models}:/opt/models -it --shm-size=24gb nndetection:0.1 /bin/bash
+docker run --gpus all -v ${det_data_parent}:/input -v ${det_models_parent}:/output -it --shm-size=24gb nndetection:0.1 /bin/bash
 ```
 
 Warning:

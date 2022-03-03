@@ -9,4 +9,4 @@ nndet_predict ${ENVTASK} ${ENVMODEL} -f -1
 cp ${det_models}/${ENVTASK}/${ENVMODEL}/${ENVFOLD}/test_predictions/* ${det_results}
 
 python convert.py ${det_results}
-cp /opt/results/result.txt /output
+cp /output/results/result.txt /output

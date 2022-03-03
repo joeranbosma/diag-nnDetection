@@ -19,7 +19,7 @@ ARG env_det_num_threads=6
 ARG env_det_verbose=1
 
 # Setup environment variables
-ENV det_data=/opt/data det_models=/opt/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
+ENV det_data=/input/data det_models=/output/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
 
 # Install some tools
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y \
