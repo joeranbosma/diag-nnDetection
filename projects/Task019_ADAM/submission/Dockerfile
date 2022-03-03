@@ -6,7 +6,7 @@ ARG model
 ARG fold
 
 ENV ENVTASK=$task ENVMODEL=$model ENVFOLD=$fold det_results=/output/results
-ENV det_data=/opt/data
+ENV det_data=/home/user/data
 ENV det_models=/output/models
 
 RUN echo ${ENVTASK} ${ENVMODEL} ${ENVFOLD} \

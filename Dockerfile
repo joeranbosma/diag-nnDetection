@@ -20,7 +20,7 @@ ARG env_det_verbose=0
 # set env_det_verbose=1 for tqdm progress bars
 
 # Setup environment variables
-ENV det_data=/opt/data det_models=/output/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
+ENV det_data=/home/user/data det_models=/output/models det_num_threads=$env_det_num_threads det_verbose=$env_det_verbose OMP_NUM_THREADS=1
 
 # Install some tools
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y \
@@ -40,11 +40,11 @@ RUN pip install numpy
 COPY ./requirements.txt .
 RUN mkdir -p ${det_data} \
   && mkdir -p ${det_models} \
-  && mkdir -p /opt/code/nndet \
+  && mkdir -p /home/code/nndet \
   && pip install -r requirements.txt  \
   && pip install hydra-core --upgrade --pre \
   && pip install git+https://github.com/mibaumgartner/pytorch_model_summary.git
 
-WORKDIR /opt/code/nndet
+WORKDIR /home/code/nndet
 COPY . .
 RUN FORCE_CUDA=1 pip install -v -e .
